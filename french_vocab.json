@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "created": "2026-05-16",
+  "words": [
+    {
+      "id": "w011",
+      "word": "barbe",
+      "translation": "beard",
+      "pronunciation": "baʁb",
+      "example": "Il a une longue barbe.",
+      "date_added": "2026-05-16",
+      "next_review": "2026-05-16",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w012",
+      "word": "cicatrice",
+      "translation": "scar",
+      "pronunciation": "si.ka.tʁis",
+      "example": "Il a une cicatrice sur le bras.",
+      "date_added": "2026-05-16",
+      "next_review": "2026-05-16",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w013",
+      "word": "blouson",
+      "translation": "jacket / bomber jacket",
+      "pronunciation": "blu.zɔ̃",
+      "example": "Il porte un blouson en cuir.",
+      "date_added": "2026-05-16",
+      "next_review": "2026-05-16",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w014",
+      "word": "cuir",
+      "translation": "leather",
+      "pronunciation": "kɥiʁ",
+      "example": "Ce sac est en cuir véritable.",
+      "date_added": "2026-05-16",
+      "next_review": "2026-05-16",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w015",
+      "word": "pantalon",
+      "translation": "trousers / pants",
+      "pronunciation": "pɑ̃.ta.lɔ̃",
+      "example": "Il porte un pantalon noir.",
+      "date_added": "2026-05-17",
+      "next_review": "2026-05-17",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w016",
+      "word": "recherche",
+      "translation": "research / search",
+      "pronunciation": "ʁə.ʃɛʁʃ",
+      "example": "Il fait des recherches sur internet.",
+      "date_added": "2026-05-17",
+      "next_review": "2026-05-17",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    }
+  ]
+}
