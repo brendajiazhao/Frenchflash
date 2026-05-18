@@ -73,6 +73,42 @@
       "interval": 0,
       "ease_factor": 2.5,
       "reviews": []
+    },
+    {
+      "id": "w017",
+      "word": "fenêtres",
+      "translation": "windows",
+      "pronunciation": "fə.nɛtʁ",
+      "example": "Il y a de grandes fenêtres dans cette salle.",
+      "date_added": "2026-05-17",
+      "next_review": "2026-05-17",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w018",
+      "word": "vitraux colorés",
+      "translation": "stained glass windows",
+      "pronunciation": "vi.tʁo kɔ.lɔ.ʁe",
+      "example": "Les vitraux colorés illuminent l'église.",
+      "date_added": "2026-05-17",
+      "next_review": "2026-05-17",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w019",
+      "word": "voitures de course",
+      "translation": "racing cars",
+      "pronunciation": "vwa.tyʁ də kuʁs",
+      "example": "Les voitures de course roulent très vite.",
+      "date_added": "2026-05-17",
+      "next_review": "2026-05-17",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
     }
   ]
 }
