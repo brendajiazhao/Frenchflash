@@ -109,6 +109,114 @@
       "interval": 0,
       "ease_factor": 2.5,
       "reviews": []
+    },
+    {
+      "id": "w020",
+      "word": "également",
+      "translation": "also / likewise / equally",
+      "pronunciation": "e.ɡal.mɑ̃",
+      "example": "Il parle également anglais et français.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w021",
+      "word": "emblématique",
+      "translation": "emblematic / iconic",
+      "pronunciation": "ɑ̃.ble.ma.tik",
+      "example": "La tour Eiffel est un monument emblématique de Paris.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w022",
+      "word": "célèbre",
+      "translation": "famous / celebrated",
+      "pronunciation": "se.lɛbʁ",
+      "example": "C'est une célèbre course automobile de la ville.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w023",
+      "word": "course automobile",
+      "translation": "car race / motor race",
+      "pronunciation": "kuʁs o.to.mo.bil",
+      "example": "La course automobile attire des milliers de spectateurs.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w024",
+      "word": "voler",
+      "translation": "to fly / to steal",
+      "pronunciation": "vɔ.le",
+      "example": "L'oiseau vole au-dessus des toits.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w025",
+      "word": "virevolte",
+      "translation": "twirl / spin",
+      "pronunciation": "vi.ʁə.vɔlt",
+      "example": "La danseuse fait une virevolte gracieuse.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w026",
+      "word": "nuages",
+      "translation": "clouds",
+      "pronunciation": "nɥaʒ",
+      "example": "Les nuages cachent le soleil ce matin.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w027",
+      "word": "marche",
+      "translation": "walk / march / step",
+      "pronunciation": "maʁʃ",
+      "example": "Il fait une longue marche chaque matin.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w028",
+      "word": "léger",
+      "translation": "light / lightweight / mild",
+      "pronunciation": "le.ʒe",
+      "example": "Ce tissu est très léger et agréable à porter.",
+      "date_added": "2026-05-18",
+      "next_review": "2026-05-18",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
     }
   ]
 }
