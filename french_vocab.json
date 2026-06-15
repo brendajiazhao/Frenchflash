@@ -973,6 +973,42 @@
       "interval": 0,
       "ease_factor": 2.5,
       "reviews": []
+    },
+    {
+      "id": "w092",
+      "word": "beignet",
+      "translation": "donut / fritter",
+      "pronunciation": "be.ɲɛ",
+      "example": "Elle achète un beignet chaud à la boulangerie.",
+      "date_added": "2026-06-15",
+      "next_review": "2026-06-15",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w093",
+      "word": "fraîches",
+      "translation": "fresh / cool (fem. pl.)",
+      "pronunciation": "fʁɛʃ",
+      "example": "Les fraises fraîches sont délicieuses en été.",
+      "date_added": "2026-06-15",
+      "next_review": "2026-06-15",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w094",
+      "word": "souci",
+      "translation": "worry / concern",
+      "pronunciation": "su.si",
+      "example": "Ne te fais pas de souci, tout va bien se passer.",
+      "date_added": "2026-06-15",
+      "next_review": "2026-06-15",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
     }
   ]
 }
