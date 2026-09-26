@@ -1813,6 +1813,66 @@
       "interval": 0,
       "ease_factor": 2.5,
       "reviews": []
+    },
+    {
+      "id": "w162",
+      "word": "le nord",
+      "translation": "north",
+      "pronunciation": "lə nɔʁ",
+      "example": "Lille se trouve dans le nord de la France.",
+      "date_added": "2026-09-25",
+      "next_review": "2026-09-25",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w163",
+      "word": "le sud",
+      "translation": "south",
+      "pronunciation": "lə syd",
+      "example": "Il fait plus chaud dans le sud.",
+      "date_added": "2026-09-25",
+      "next_review": "2026-09-25",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w164",
+      "word": "l'est",
+      "translation": "east",
+      "pronunciation": "lɛst",
+      "example": "Le soleil se lève à l'est.",
+      "date_added": "2026-09-25",
+      "next_review": "2026-09-25",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w165",
+      "word": "l'ouest",
+      "translation": "west",
+      "pronunciation": "lwɛst",
+      "example": "Le soleil se couche à l'ouest.",
+      "date_added": "2026-09-25",
+      "next_review": "2026-09-25",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
+    },
+    {
+      "id": "w166",
+      "word": "naître",
+      "translation": "to be born",
+      "pronunciation": "nɛtʁ",
+      "example": "Elle est née à Paris en 1990.",
+      "date_added": "2026-09-25",
+      "next_review": "2026-09-25",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": []
     }
   ]
 }
