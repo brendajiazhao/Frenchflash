@@ -168,7 +168,59 @@
       "next_review": "2026-05-18",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "volé",
+        "présent": [
+          "je vole",
+          "tu voles",
+          "il/elle vole",
+          "nous volons",
+          "vous volez",
+          "ils/elles volent"
+        ],
+        "passé composé": [
+          "j'ai volé",
+          "tu as volé",
+          "il/elle a volé",
+          "nous avons volé",
+          "vous avez volé",
+          "ils/elles ont volé"
+        ],
+        "imparfait": [
+          "je volais",
+          "tu volais",
+          "il/elle volait",
+          "nous volions",
+          "vous voliez",
+          "ils/elles volaient"
+        ],
+        "futur simple": [
+          "je volerai",
+          "tu voleras",
+          "il/elle volera",
+          "nous volerons",
+          "vous volerez",
+          "ils/elles voleront"
+        ],
+        "conditionnel": [
+          "je volerais",
+          "tu volerais",
+          "il/elle volerait",
+          "nous volerions",
+          "vous voleriez",
+          "ils/elles voleraient"
+        ],
+        "subjonctif présent": [
+          "que je vole",
+          "que tu voles",
+          "qu'il/elle vole",
+          "que nous volions",
+          "que vous voliez",
+          "qu'ils/elles volent"
+        ]
+      }
     },
     {
       "id": "w025",
@@ -240,7 +292,59 @@
       "next_review": "2026-05-20",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "apporté",
+        "présent": [
+          "j'apporte",
+          "tu apportes",
+          "il/elle apporte",
+          "nous apportons",
+          "vous apportez",
+          "ils/elles apportent"
+        ],
+        "passé composé": [
+          "j'ai apporté",
+          "tu as apporté",
+          "il/elle a apporté",
+          "nous avons apporté",
+          "vous avez apporté",
+          "ils/elles ont apporté"
+        ],
+        "imparfait": [
+          "j'apportais",
+          "tu apportais",
+          "il/elle apportait",
+          "nous apportions",
+          "vous apportiez",
+          "ils/elles apportaient"
+        ],
+        "futur simple": [
+          "j'apporterai",
+          "tu apporteras",
+          "il/elle apportera",
+          "nous apporterons",
+          "vous apporterez",
+          "ils/elles apporteront"
+        ],
+        "conditionnel": [
+          "j'apporterais",
+          "tu apporterais",
+          "il/elle apporterait",
+          "nous apporterions",
+          "vous apporteriez",
+          "ils/elles apporteraient"
+        ],
+        "subjonctif présent": [
+          "que j'apporte",
+          "que tu apportes",
+          "qu'il/elle apporte",
+          "que nous apportions",
+          "que vous apportiez",
+          "qu'ils/elles apportent"
+        ]
+      }
     },
     {
       "id": "w031",
@@ -408,7 +512,59 @@
       "next_review": "2026-05-25",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "remercié",
+        "présent": [
+          "je remercie",
+          "tu remercies",
+          "il/elle remercie",
+          "nous remercions",
+          "vous remerciez",
+          "ils/elles remercient"
+        ],
+        "passé composé": [
+          "j'ai remercié",
+          "tu as remercié",
+          "il/elle a remercié",
+          "nous avons remercié",
+          "vous avez remercié",
+          "ils/elles ont remercié"
+        ],
+        "imparfait": [
+          "je remerciais",
+          "tu remerciais",
+          "il/elle remerciait",
+          "nous remerciions",
+          "vous remerciiez",
+          "ils/elles remerciaient"
+        ],
+        "futur simple": [
+          "je remercierai",
+          "tu remercieras",
+          "il/elle remerciera",
+          "nous remercierons",
+          "vous remercierez",
+          "ils/elles remercieront"
+        ],
+        "conditionnel": [
+          "je remercierais",
+          "tu remercierais",
+          "il/elle remercierait",
+          "nous remercierions",
+          "vous remercieriez",
+          "ils/elles remercieraient"
+        ],
+        "subjonctif présent": [
+          "que je remercie",
+          "que tu remercies",
+          "qu'il/elle remercie",
+          "que nous remerciions",
+          "que vous remerciiez",
+          "qu'ils/elles remercient"
+        ]
+      }
     },
     {
       "id": "w045",
@@ -528,7 +684,59 @@
       "next_review": "2026-05-25",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "couché",
+        "présent": [
+          "je couche",
+          "tu couches",
+          "il/elle couche",
+          "nous couchons",
+          "vous couchez",
+          "ils/elles couchent"
+        ],
+        "passé composé": [
+          "j'ai couché",
+          "tu as couché",
+          "il/elle a couché",
+          "nous avons couché",
+          "vous avez couché",
+          "ils/elles ont couché"
+        ],
+        "imparfait": [
+          "je couchais",
+          "tu couchais",
+          "il/elle couchait",
+          "nous couchions",
+          "vous couchiez",
+          "ils/elles couchaient"
+        ],
+        "futur simple": [
+          "je coucherai",
+          "tu coucheras",
+          "il/elle couchera",
+          "nous coucherons",
+          "vous coucherez",
+          "ils/elles coucheront"
+        ],
+        "conditionnel": [
+          "je coucherais",
+          "tu coucherais",
+          "il/elle coucherait",
+          "nous coucherions",
+          "vous coucheriez",
+          "ils/elles coucheraient"
+        ],
+        "subjonctif présent": [
+          "que je couche",
+          "que tu couches",
+          "qu'il/elle couche",
+          "que nous couchions",
+          "que vous couchiez",
+          "qu'ils/elles couchent"
+        ]
+      }
     },
     {
       "id": "w055",
@@ -540,7 +748,59 @@
       "next_review": "2026-05-25",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "levé",
+        "présent": [
+          "je lève",
+          "tu lèves",
+          "il/elle lève",
+          "nous levons",
+          "vous levez",
+          "ils/elles lèvent"
+        ],
+        "passé composé": [
+          "j'ai levé",
+          "tu as levé",
+          "il/elle a levé",
+          "nous avons levé",
+          "vous avez levé",
+          "ils/elles ont levé"
+        ],
+        "imparfait": [
+          "je levais",
+          "tu levais",
+          "il/elle levait",
+          "nous levions",
+          "vous leviez",
+          "ils/elles levaient"
+        ],
+        "futur simple": [
+          "je lèverai",
+          "tu lèveras",
+          "il/elle lèvera",
+          "nous lèverons",
+          "vous lèverez",
+          "ils/elles lèveront"
+        ],
+        "conditionnel": [
+          "je lèverais",
+          "tu lèverais",
+          "il/elle lèverait",
+          "nous lèverions",
+          "vous lèveriez",
+          "ils/elles lèveraient"
+        ],
+        "subjonctif présent": [
+          "que je lève",
+          "que tu lèves",
+          "qu'il/elle lève",
+          "que nous levions",
+          "que vous leviez",
+          "qu'ils/elles lèvent"
+        ]
+      }
     },
     {
       "id": "w056",
@@ -576,7 +836,59 @@
       "next_review": "2026-05-25",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "noté",
+        "présent": [
+          "je note",
+          "tu notes",
+          "il/elle note",
+          "nous notons",
+          "vous notez",
+          "ils/elles notent"
+        ],
+        "passé composé": [
+          "j'ai noté",
+          "tu as noté",
+          "il/elle a noté",
+          "nous avons noté",
+          "vous avez noté",
+          "ils/elles ont noté"
+        ],
+        "imparfait": [
+          "je notais",
+          "tu notais",
+          "il/elle notait",
+          "nous notions",
+          "vous notiez",
+          "ils/elles notaient"
+        ],
+        "futur simple": [
+          "je noterai",
+          "tu noteras",
+          "il/elle notera",
+          "nous noterons",
+          "vous noterez",
+          "ils/elles noteront"
+        ],
+        "conditionnel": [
+          "je noterais",
+          "tu noterais",
+          "il/elle noterait",
+          "nous noterions",
+          "vous noteriez",
+          "ils/elles noteraient"
+        ],
+        "subjonctif présent": [
+          "que je note",
+          "que tu notes",
+          "qu'il/elle note",
+          "que nous notions",
+          "que vous notiez",
+          "qu'ils/elles notent"
+        ]
+      }
     },
     {
       "id": "w059",
@@ -588,7 +900,59 @@
       "next_review": "2026-05-25",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "raté",
+        "présent": [
+          "je rate",
+          "tu rates",
+          "il/elle rate",
+          "nous ratons",
+          "vous ratez",
+          "ils/elles ratent"
+        ],
+        "passé composé": [
+          "j'ai raté",
+          "tu as raté",
+          "il/elle a raté",
+          "nous avons raté",
+          "vous avez raté",
+          "ils/elles ont raté"
+        ],
+        "imparfait": [
+          "je ratais",
+          "tu ratais",
+          "il/elle ratait",
+          "nous rations",
+          "vous ratiez",
+          "ils/elles rataient"
+        ],
+        "futur simple": [
+          "je raterai",
+          "tu rateras",
+          "il/elle ratera",
+          "nous raterons",
+          "vous raterez",
+          "ils/elles rateront"
+        ],
+        "conditionnel": [
+          "je raterais",
+          "tu raterais",
+          "il/elle raterait",
+          "nous raterions",
+          "vous rateriez",
+          "ils/elles rateraient"
+        ],
+        "subjonctif présent": [
+          "que je rate",
+          "que tu rates",
+          "qu'il/elle rate",
+          "que nous rations",
+          "que vous ratiez",
+          "qu'ils/elles ratent"
+        ]
+      }
     },
     {
       "id": "w060",
@@ -1344,7 +1708,59 @@
       "next_review": "2026-06-16",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "revu",
+        "présent": [
+          "je revois",
+          "tu revois",
+          "il/elle revoit",
+          "nous revoyons",
+          "vous revoyez",
+          "ils/elles revoient"
+        ],
+        "passé composé": [
+          "j'ai revu",
+          "tu as revu",
+          "il/elle a revu",
+          "nous avons revu",
+          "vous avez revu",
+          "ils/elles ont revu"
+        ],
+        "imparfait": [
+          "je revoyais",
+          "tu revoyais",
+          "il/elle revoyait",
+          "nous revoyions",
+          "vous revoyiez",
+          "ils/elles revoyaient"
+        ],
+        "futur simple": [
+          "je reverrai",
+          "tu reverras",
+          "il/elle reverra",
+          "nous reverrons",
+          "vous reverrez",
+          "ils/elles reverront"
+        ],
+        "conditionnel": [
+          "je reverrais",
+          "tu reverrais",
+          "il/elle reverrait",
+          "nous reverrions",
+          "vous reverriez",
+          "ils/elles reverraient"
+        ],
+        "subjonctif présent": [
+          "que je revoie",
+          "que tu revoies",
+          "qu'il/elle revoie",
+          "que nous revoyions",
+          "que vous revoyiez",
+          "qu'ils/elles revoient"
+        ]
+      }
     },
     {
       "id": "w123",
@@ -1512,7 +1928,59 @@
       "next_review": "2026-06-17",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "avoir",
+        "participle": "gagné",
+        "présent": [
+          "je gagne",
+          "tu gagnes",
+          "il/elle gagne",
+          "nous gagnons",
+          "vous gagnez",
+          "ils/elles gagnent"
+        ],
+        "passé composé": [
+          "j'ai gagné",
+          "tu as gagné",
+          "il/elle a gagné",
+          "nous avons gagné",
+          "vous avez gagné",
+          "ils/elles ont gagné"
+        ],
+        "imparfait": [
+          "je gagnais",
+          "tu gagnais",
+          "il/elle gagnait",
+          "nous gagnions",
+          "vous gagniez",
+          "ils/elles gagnaient"
+        ],
+        "futur simple": [
+          "je gagnerai",
+          "tu gagneras",
+          "il/elle gagnera",
+          "nous gagnerons",
+          "vous gagnerez",
+          "ils/elles gagneront"
+        ],
+        "conditionnel": [
+          "je gagnerais",
+          "tu gagnerais",
+          "il/elle gagnerait",
+          "nous gagnerions",
+          "vous gagneriez",
+          "ils/elles gagneraient"
+        ],
+        "subjonctif présent": [
+          "que je gagne",
+          "que tu gagnes",
+          "qu'il/elle gagne",
+          "que nous gagnions",
+          "que vous gagniez",
+          "qu'ils/elles gagnent"
+        ]
+      }
     },
     {
       "id": "w137",
@@ -1872,7 +2340,59 @@
       "next_review": "2026-09-25",
       "interval": 0,
       "ease_factor": 2.5,
-      "reviews": []
+      "reviews": [],
+      "conjugations": {
+        "auxiliary": "être",
+        "participle": "né",
+        "présent": [
+          "je nais",
+          "tu nais",
+          "il/elle naît",
+          "nous naissons",
+          "vous naissez",
+          "ils/elles naissent"
+        ],
+        "passé composé": [
+          "je suis né(e)",
+          "tu es né(e)",
+          "il/elle est né(e)",
+          "nous sommes né(e)s",
+          "vous êtes né(e)(s)",
+          "ils/elles sont né(e)s"
+        ],
+        "imparfait": [
+          "je naissais",
+          "tu naissais",
+          "il/elle naissait",
+          "nous naissions",
+          "vous naissiez",
+          "ils/elles naissaient"
+        ],
+        "futur simple": [
+          "je naîtrai",
+          "tu naîtras",
+          "il/elle naîtra",
+          "nous naîtrons",
+          "vous naîtrez",
+          "ils/elles naîtront"
+        ],
+        "conditionnel": [
+          "je naîtrais",
+          "tu naîtrais",
+          "il/elle naîtrait",
+          "nous naîtrions",
+          "vous naîtriez",
+          "ils/elles naîtraient"
+        ],
+        "subjonctif présent": [
+          "que je naisse",
+          "que tu naisses",
+          "qu'il/elle naisse",
+          "que nous naissions",
+          "que vous naissiez",
+          "qu'ils/elles naissent"
+        ]
+      }
     }
   ]
 }
