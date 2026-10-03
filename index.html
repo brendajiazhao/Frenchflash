@@ -89,6 +89,22 @@
   .toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:white;padding:12px 20px;border-radius:10px;font-size:0.85rem;box-shadow:0 8px 24px rgba(0,0,0,0.2);opacity:0;transform:translateY(8px);transition:all 0.3s;z-index:100;pointer-events:none;}
   .toast.show{opacity:1;transform:translateY(0);}
   .loading{text-align:center;padding:80px 20px;color:var(--muted);font-size:0.9rem;}
+  .conj-wrap{max-width:560px;margin:0 auto 24px;}.conj-wrap.hidden{display:none;}
+  .conj-toggle{background:white;border:1.5px solid var(--cream-dark);color:var(--navy);padding:8px 18px;border-radius:99px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.18s;}
+  .conj-toggle:hover{border-color:var(--gold);}
+  .conj-panel{display:none;background:white;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,0.07);padding:16px 18px;margin-top:12px;text-align:left;}
+  .conj-panel.open{display:block;}
+  .conj-meta{font-size:0.75rem;color:var(--muted);margin-bottom:10px;}
+  .conj-meta b{color:var(--navy);font-weight:600;}
+  .conj-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+  .conj-tab{border:none;background:var(--cream-dark);color:var(--muted);padding:5px 10px;border-radius:8px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+  .conj-tab.active{background:var(--navy);color:white;}
+  .conj-forms{display:none;grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:4px 24px;}
+  .conj-forms.active{display:grid;}
+  .conj-form{display:flex;align-items:center;gap:4px;font-size:0.88rem;color:var(--text);}
+  .conj-row td{background:var(--cream);}
+  .conj-row .conj-panel{box-shadow:none;margin:0;}
+  @media(max-width:520px){.conj-forms{grid-template-rows:none;grid-auto-flow:row;}}
 </style>
 </head>
 <body>
@@ -194,6 +210,36 @@ function sm2(word, rating) {
 function nextLabel(w,r){const d=sm2(w,r).interval;if(d===0)return'now';if(d===1)return'1d';if(d<7)return d+'d';if(d<30)return Math.round(d/7)+'w';return Math.round(d/30)+'mo';}
 function buildQueue(){queue=vocab.words.filter(w=>w.next_review<=TODAY).sort((a,b)=>a.next_review.localeCompare(b.next_review));qIdx=0;sessionStats={again:0,hard:0,good:0,easy:0};}
 
+// ── CONJUGATION ───────────────────────────────────────────
+const TENSES = ['présent','passé composé','imparfait','futur simple','conditionnel','subjonctif présent'];
+const SPEAK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
+function escAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function conjPanel(w, uid) {
+  const c = w.conjugations; if (!c) return '';
+  const ts = TENSES.filter(t => Array.isArray(c[t])); if (!ts.length) return '';
+  const meta = [c.auxiliary ? `auxiliaire : <b>${c.auxiliary}</b>` : '', c.participle ? `participe passé : <b>${c.participle}</b>` : ''].filter(Boolean).join(' · ');
+  return `<div class="conj-panel" id="${uid}" onclick="event.stopPropagation()">
+    ${meta ? `<div class="conj-meta">${meta}</div>` : ''}
+    <div class="conj-tabs">${ts.map((t,i)=>`<button class="conj-tab${i?'':' active'}" onclick="showTense('${uid}',${i})">${t}</button>`).join('')}</div>
+    ${ts.map((t,i)=>`<div class="conj-forms${i?'':' active'}">${c[t].map(f=>`<div class="conj-form">${f}<button class="speak-btn back sm" data-t="${escAttr(f)}" onclick="speak(this.dataset.t,this)" title="Pronounce">${SPEAK_SVG}</button></div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function showTense(uid, i) {
+  const p = document.getElementById(uid);
+  p.querySelectorAll('.conj-tab').forEach((b,j)=>b.classList.toggle('active', j===i));
+  p.querySelectorAll('.conj-forms').forEach((d,j)=>d.classList.toggle('active', j===i));
+}
+function toggleConj(uid, btn) {
+  const open = document.getElementById(uid).classList.toggle('open');
+  btn.textContent = open ? 'Conjugaison ▴' : 'Conjugaison ▾';
+}
+function toggleConjRow(id, btn) {
+  const r = document.getElementById('crow-'+id), open = r.style.display === 'none';
+  r.style.display = open ? '' : 'none';
+  document.getElementById('cl-'+id).classList.add('open');
+  btn.textContent = open ? 'Conjugaison ▴' : 'Conjugaison ▾';
+}
+
 // ── TABS ─────────────────────────────────────────────────
 function switchTab(name) {
   document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['review','list','data'][i]===name));
@@ -276,7 +322,11 @@ function showCard() {
         <button class="rating-btn btn-good"  onclick="rate(2)">Good<span class="next-info">${nextLabel(w,2)}</span></button>
         <button class="rating-btn btn-easy"  onclick="rate(3)">Easy<span class="next-info">${nextLabel(w,3)}</span></button>
       </div>
-    </div>`;
+    </div>
+    ${w.conjugations ? `<div class="conj-wrap hidden" id="conj-wrap">
+      <div style="text-align:center;margin-top:20px"><button class="conj-toggle" onclick="toggleConj('cc-${w.id}',this)">Conjugaison ▾</button></div>
+      ${conjPanel(w,'cc-'+w.id)}
+    </div>` : ''}`;
 }
 
 function flipCard() {
@@ -284,6 +334,7 @@ function flipCard() {
   document.getElementById('card-3d').classList.add('flipped');
   document.getElementById('flip-prompt').classList.add('hidden');
   document.getElementById('rating-section').classList.remove('hidden');
+  const cw = document.getElementById('conj-wrap'); if (cw) cw.classList.remove('hidden');
 }
 
 function rate(rating) {
@@ -301,7 +352,7 @@ function rate(rating) {
 // ── LIST ──────────────────────────────────────────────────
 function renderList() {
   const q=document.getElementById('search-box').value.toLowerCase();
-  const words=vocab.words.filter(w=>!q||w.word.toLowerCase().includes(q)||w.translation.toLowerCase().includes(q));
+  const words=vocab.words.filter(w=>!q||w.word.toLowerCase().includes(q)||w.translation.toLowerCase().includes(q)||(w.conjugations&&JSON.stringify(w.conjugations).toLowerCase().includes(q)));
   if (!words.length) { document.getElementById('list-area').innerHTML=`<div class="empty-state"><div class="ei">📭</div><p>No words found.</p></div>`; return; }
   document.getElementById('list-area').innerHTML=`
     <table class="word-table">
@@ -314,14 +365,16 @@ function renderList() {
             <button class="speak-btn back sm" onclick="speak('${safeWord}',this)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             </button></div>
-            <div class="word-ipa">/${w.pronunciation}/</div></td>
+            <div class="word-ipa">/${w.pronunciation}/</div>
+            ${w.conjugations?`<button class="conj-toggle" style="margin-top:6px;padding:3px 10px;font-size:0.68rem" onclick="toggleConjRow('${w.id}',this)">Conjugaison ▾</button>`:''}</td>
           <td>${w.translation}</td>
           <td>${w.example?`<span style="color:var(--muted);font-size:0.8rem;font-style:italic">${w.example}</span>
             <button class="speak-btn back sm" onclick="speak('${safeEx}',this)" style="margin-left:4px">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             </button>`:'—'}</td>
           <td>${badge}</td>
-          <td style="color:var(--muted);font-size:0.75rem">${w.next_review}</td></tr>`;
+          <td style="color:var(--muted);font-size:0.75rem">${w.next_review}</td></tr>
+          ${w.conjugations?`<tr class="conj-row" id="crow-${w.id}" style="display:none"><td colspan="5">${conjPanel(w,'cl-'+w.id)}</td></tr>`:''}`;
       }).join('')}</tbody></table>`;
 }
 
