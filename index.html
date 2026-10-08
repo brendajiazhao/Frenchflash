@@ -38,6 +38,8 @@
   .card-hint{font-size:0.8rem;opacity:0.45;margin-top:16px;color:white;}
   .card-pronunciation{font-size:0.95rem;color:var(--gold);font-weight:500;margin-bottom:8px;font-style:italic;}
   .card-translation{font-size:1.05rem;color:var(--text);font-weight:400;margin-bottom:6px;}
+  .card-note{font-size:0.82rem;color:var(--muted);margin-bottom:6px;}
+  .card-topic{display:inline-block;font-size:0.68rem;color:var(--muted);border:1px solid currentColor;border-radius:10px;padding:1px 8px;margin-bottom:8px;opacity:.8;}
   .card-example-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:10px 14px;background:var(--cream);border-radius:8px;max-width:100%;}
   .card-example{font-size:0.8rem;color:var(--muted);font-style:italic;line-height:1.5;text-align:left;}
   .speak-btn{background:none;border:none;cursor:pointer;padding:4px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;transition:all 0.18s;flex-shrink:0;}
@@ -299,8 +301,10 @@ function showCard() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             </button>
           </div>
-          <div class="card-pronunciation">/${w.pronunciation}/</div>
+          ${w.pronunciation ? `<div class="card-pronunciation">/${w.pronunciation}/</div>` : ''}
           <div class="card-translation">${w.translation}</div>
+          ${w.note ? `<div class="card-note">${w.note}</div>` : ''}
+          ${w.topic ? `<div class="card-topic">${w.topic}</div>` : ''}
           ${w.example ? `
           <div class="card-example-row">
             <div class="card-example">${w.example}</div>
@@ -352,7 +356,7 @@ function rate(rating) {
 // ── LIST ──────────────────────────────────────────────────
 function renderList() {
   const q=document.getElementById('search-box').value.toLowerCase();
-  const words=vocab.words.filter(w=>!q||w.word.toLowerCase().includes(q)||w.translation.toLowerCase().includes(q)||(w.conjugations&&JSON.stringify(w.conjugations).toLowerCase().includes(q)));
+  const words=vocab.words.filter(w=>!q||w.word.toLowerCase().includes(q)||w.translation.toLowerCase().includes(q)||(w.note||'').toLowerCase().includes(q)||(w.topic||'').toLowerCase().includes(q)||(w.conjugations&&JSON.stringify(w.conjugations).toLowerCase().includes(q)));
   if (!words.length) { document.getElementById('list-area').innerHTML=`<div class="empty-state"><div class="ei">📭</div><p>No words found.</p></div>`; return; }
   document.getElementById('list-area').innerHTML=`
     <table class="word-table">
@@ -365,9 +369,9 @@ function renderList() {
             <button class="speak-btn back sm" onclick="speak('${safeWord}',this)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             </button></div>
-            <div class="word-ipa">/${w.pronunciation}/</div>
+            ${w.pronunciation?`<div class="word-ipa">/${w.pronunciation}/</div>`:''}
             ${w.conjugations?`<button class="conj-toggle" style="margin-top:6px;padding:3px 10px;font-size:0.68rem" onclick="toggleConjRow('${w.id}',this)">Conjugaison ▾</button>`:''}</td>
-          <td>${w.translation}</td>
+          <td>${w.translation}${w.note?`<div style="color:var(--muted);font-size:0.75rem;margin-top:2px">${w.note}</div>`:''}</td>
           <td>${w.example?`<span style="color:var(--muted);font-size:0.8rem;font-style:italic">${w.example}</span>
             <button class="speak-btn back sm" onclick="speak('${safeEx}',this)" style="margin-left:4px">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
