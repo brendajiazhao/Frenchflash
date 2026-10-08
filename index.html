@@ -135,6 +135,15 @@
       <button class="btn-primary" onclick="location.reload()">🔄 Reload latest words</button>
     </div>
     <div class="io-section">
+      <h3>📱 多设备同步复习进度</h3>
+      <p>在每台设备（电脑、手机）上粘贴同一个 GitHub token，复习进度就会自动在设备之间同步。只需设置一次。</p>
+      <div id="cloud-status" style="font-size:0.85rem;margin:10px 0;color:var(--muted)"></div>
+      <input type="password" id="cloud-token" placeholder="github_pat_…" autocomplete="off" style="width:100%;padding:10px 12px;border:1px solid var(--cream-dark);border-radius:8px;font-size:0.9rem;margin-bottom:10px;font-family:monospace">
+      <button class="btn-primary" onclick="saveCloudToken()">保存并同步</button>
+      <button class="btn-primary" onclick="cloudSync(true)" style="margin-left:8px">立即同步</button>
+      <button class="btn-primary" onclick="clearCloudToken()" style="margin-left:8px;background:var(--muted)">移除 token</button>
+    </div>
+    <div class="io-section">
       <h3>📤 Backup progress</h3>
       <p>Download a backup of your vocabulary and all review history.</p>
       <button class="btn-primary" onclick="exportJSON()">Download french_vocab.json</button>
@@ -147,7 +156,7 @@
     </div>
     <div class="io-section">
       <h3>ℹ️ How this works</h3>
-      <p><strong>Adding words:</strong> Tell Claude in chat — words sync to this app automatically overnight.<br><br><strong>Daily review:</strong> Open the app, tap through due cards, rate each one.<br><br><strong>Progress:</strong> Saved automatically in your browser — no export needed.<br><br><strong>Spaced repetition (SM-2):</strong> Again = tomorrow, Easy = weeks away.<br><br><strong>Pronunciation 🔊:</strong> Tap the speaker icon to hear the word in French.</p>
+      <p><strong>Adding words:</strong> Tell Claude in chat — words sync to this app automatically overnight.<br><br><strong>Daily review:</strong> Open the app, tap through due cards, rate each one.<br><br><strong>Progress:</strong> Saved automatically in your browser; with 多设备同步 turned on it is also shared between your devices.<br><br><strong>Spaced repetition (SM-2):</strong> Again = tomorrow, Easy = weeks away.<br><br><strong>Pronunciation 🔊:</strong> Tap the speaker icon to hear the word in French.</p>
     </div>
   </div>
 </main>
@@ -185,11 +194,99 @@ function saveProgress() {
       interval: w.interval,
       ease_factor: w.ease_factor,
       next_review: w.next_review,
-      reviews: w.reviews
+      reviews: w.reviews,
+      ...(w.updated ? {updated: w.updated} : {})
     };
   });
-  localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+  try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch(e) {}
+  scheduleCloudSync();
 }
+
+// ── CLOUD SYNC (progress.json on the 'progress' branch of the GitHub repo) ──
+const CLOUD_TOKEN_KEY = 'frenchflash_cloud_token';
+const CLOUD_LAST_KEY = 'frenchflash_cloud_last';
+const CLOUD_URL = 'https://api.github.com/repos/brendajiazhao/Frenchflash/contents/progress.json';
+const CLOUD_BRANCH = 'progress';
+let cloudTimer = null, cloudBusy = false, cloudAgain = false;
+
+function cloudToken(){ try { return localStorage.getItem(CLOUD_TOKEN_KEY) || ''; } catch(e) { return ''; } }
+function b64enc(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64dec(b64){ return decodeURIComponent(escape(atob(b64.replace(/\s/g,'')))); }
+function setCloudStatus(msg, ok){
+  const el = document.getElementById('cloud-status'); if (!el) return;
+  el.textContent = msg; el.style.color = ok === false ? 'var(--red)' : ok ? 'var(--green)' : 'var(--muted)';
+}
+function showCloudStatus(){
+  if (!cloudToken()) { setCloudStatus('未开启：进度只保存在这台设备上。'); return; }
+  let last = ''; try { last = localStorage.getItem(CLOUD_LAST_KEY) || ''; } catch(e) {}
+  setCloudStatus(last ? '已开启 · 上次同步 ' + new Date(last).toLocaleString() : '已开启 · 尚未同步', true);
+}
+function scheduleCloudSync(){
+  if (!cloudToken()) return;
+  clearTimeout(cloudTimer); cloudTimer = setTimeout(() => cloudSync(false), 2500);
+}
+// one record per word; the one with more reviews wins, ties go to the later update
+function pickRecord(a, b){
+  if (!a) return b; if (!b) return a;
+  const ra = (a.reviews||[]).length, rb = (b.reviews||[]).length;
+  if (ra !== rb) return ra > rb ? a : b;
+  return (a.updated||'') >= (b.updated||'') ? a : b;
+}
+async function cloudSync(manual){
+  const token = cloudToken(); if (!token) { if (manual) showToast('请先粘贴 token'); return; }
+  if (cloudBusy) { cloudAgain = true; return; }
+  cloudBusy = true; if (manual) setCloudStatus('同步中…');
+  const headers = {'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'};
+  try {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      let remote = {}, sha;
+      const r = await fetch(CLOUD_URL + '?ref=' + CLOUD_BRANCH + '&t=' + Date.now(), {headers, cache:'no-store'});
+      if (r.ok) { const j = await r.json(); sha = j.sha; try { remote = JSON.parse(b64dec(j.content)).words || {}; } catch(e) { remote = {}; } }
+      else if (r.status !== 404) throw new Error('GitHub ' + r.status + (r.status===401?'（token 无效或已过期）':''));
+      const local = loadProgress();
+      const merged = {}; let changedLocal = false, changedRemote = false;
+      new Set([...Object.keys(local), ...Object.keys(remote)]).forEach(id => {
+        const pick = pickRecord(local[id], remote[id]); merged[id] = pick;
+        if (pick !== local[id]) changedLocal = true;
+        if (pick !== remote[id]) changedRemote = true;
+      });
+      if (changedLocal) {
+        vocab.words = vocab.words.map(w => merged[w.id] ? {...w, ...merged[w.id]} : w);
+        try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(merged)); } catch(e) {}
+        buildQueue();
+        if (!flipped) renderReview(); else renderStats();
+      }
+      if (changedRemote) {
+        const body = {message:'progress ' + new Date().toISOString(), branch:CLOUD_BRANCH,
+          content: b64enc(JSON.stringify({updated:new Date().toISOString(), words:merged}))};
+        if (sha) body.sha = sha;
+        const p = await fetch(CLOUD_URL, {method:'PUT', headers:{...headers,'Content-Type':'application/json'}, body:JSON.stringify(body)});
+        if (p.status === 409 || p.status === 422) continue;   // someone else wrote first: merge again
+        if (!p.ok) throw new Error('GitHub ' + p.status + (p.status===403||p.status===404?'（token 没有写入权限）':''));
+      }
+      try { localStorage.setItem(CLOUD_LAST_KEY, new Date().toISOString()); } catch(e) {}
+      showCloudStatus(); if (manual) showToast(changedLocal ? '已同步，载入了其他设备的进度' : '已同步');
+      break;
+    }
+  } catch(e) {
+    setCloudStatus('同步失败：' + e.message, false); if (manual) showToast('同步失败');
+  } finally {
+    cloudBusy = false;
+    if (cloudAgain) { cloudAgain = false; scheduleCloudSync(); }
+  }
+}
+function saveCloudToken(){
+  const v = document.getElementById('cloud-token').value.trim();
+  if (!v) { showToast('请先粘贴 token'); return; }
+  try { localStorage.setItem(CLOUD_TOKEN_KEY, v); } catch(e) { showToast('浏览器不允许保存'); return; }
+  document.getElementById('cloud-token').value = '';
+  cloudSync(true);
+}
+function clearCloudToken(){
+  try { localStorage.removeItem(CLOUD_TOKEN_KEY); } catch(e) {}
+  showCloudStatus(); showToast('已移除，进度只保存在本机');
+}
+document.addEventListener('visibilitychange', () => { if (cloudToken()) cloudSync(false); });
 
 // ── SRS ──────────────────────────────────────────────────
 let vocab = {version:1, words:[]};
@@ -346,6 +443,7 @@ function rate(rating) {
   if (idx !== -1) {
     Object.assign(vocab.words[idx], update);
     vocab.words[idx].reviews.push({date:TODAY, rating});
+    vocab.words[idx].updated = new Date().toISOString();
     if (rating === 0) queue.push(queue[qIdx]);
   }
   sessionStats[['again','hard','good','easy'][rating]]++;
@@ -416,6 +514,8 @@ async function init() {
   }
   buildQueue();
   renderReview();
+  showCloudStatus();
+  if (cloudToken()) cloudSync(false);
 }
 
 init();
