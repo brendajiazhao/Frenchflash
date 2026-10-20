@@ -6801,6 +6801,20 @@
       "reviews": [],
       "note": "de 后面不加冠词，遇元音变 d'",
       "topic": "易错搭配"
+    },
+    {
+      "id": "w497",
+      "word": "ne + 助动词 + pas + 过去分词",
+      "translation": "被动/复合时态的否定",
+      "pronunciation": "lə fʁɑ̃.sɛ nɛ pa bo.ku y.ti.li.ze",
+      "example": "Le français n'est pas beaucoup utilisé en Colombie-Britannique.",
+      "date_added": "2026-10-19",
+      "next_review": "2026-10-19",
+      "interval": 0,
+      "ease_factor": 2.5,
+      "reviews": [],
+      "note": "ne…pas 夹住变位的助动词：n'est pas utilisé",
+      "topic": "易错搭配"
     }
   ]
 }
